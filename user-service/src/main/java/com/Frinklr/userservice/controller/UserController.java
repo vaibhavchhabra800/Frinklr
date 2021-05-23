@@ -6,6 +6,7 @@ import com.Frinklr.userservice.entity.User;
 import com.Frinklr.userservice.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,6 +24,7 @@ public class UserController {
         return userService.saveUser(user);
     }
 
+    @LoadBalanced
     @GetMapping("/{id}")
     public ResponseTemplateVO getUserWithDepartment(@PathVariable("id") Long userId) {
         log.info("Inside getUserWithDepartment of UserController");

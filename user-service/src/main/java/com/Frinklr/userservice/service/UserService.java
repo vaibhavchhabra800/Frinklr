@@ -6,7 +6,7 @@ import com.Frinklr.userservice.entity.User;
 import com.Frinklr.userservice.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.*;
@@ -23,6 +23,7 @@ public class UserService {
     private RestTemplate restTemplate;
     
     @Bean
+    @LoadBalanced
     public RestTemplate restTemplate() {
         return new RestTemplate();
     }
